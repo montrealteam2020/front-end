@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.group{
+	width:675px;
+	background-color:#3B240B !important;
+}
+
+.marge{
+
+	 margin-top: 10px;
+
+}
+
+	body{
+		background-color: #ededed;
+		margin-top: 20px;
+	}
+
+	footer {
+			background-color: #555;
+			color: white;
+			padding: 15px;
+			margin-top: 115px;
+		}
+
+	#current-image {
+	  width: 400px !important;;
+	  height: 500px !important;
+	}
+
+	.imagelist{
+		margin: 5px;
+		width:150px;
+		height:150px !important;
+		object-fit:contain;
+	}
+
+
+	.adcontainer{
+	  margin-bottom: 10px;
+		}
+
+.ng-invalid:not(form)  {
+  border: 1px solid #a94442; /* red */
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+.caradlist{
+width:543px;
+hight:522px;
+
+}

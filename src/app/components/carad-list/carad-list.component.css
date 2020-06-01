@@ -1,0 +1,51 @@
+.adimage{
+	float:left;
+	height:150px;
+	width:150px;
+	margin-right:5px;
+}
+
+.adetails{
+float:left;
+	margin-left:5px;
+}
+
+
+
+.clear{
+clear:both;
+}
+
+.container{
+	background-color:ede6e6;
+}
+
+.adcontainer{
+
+}
+
+hr {
+    clear: both;
+    visibility: hidden;
+}
+
+.searchdiv{
+	background-color:#332d2f;
+}
+
+.title{
+	color:#fff
+}
+
+
+@media (min-width: 768px) {
+  .row.equal {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

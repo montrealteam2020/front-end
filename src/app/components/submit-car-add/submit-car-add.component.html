@@ -1,0 +1,288 @@
+<div class="container">
+
+ <div class="col-xs-9" >
+
+  <form    #carForm="ngForm" >
+    	<div class="row well">
+          <div class="row">
+             <div class="col-xs-4"><label for="adtitle" [translate]="'post.adtitle'"></label>
+             </div>
+             <div class="col-xs-8">
+               <div class="row">
+                 <div class="col-md-4 col-md-push-4"></div>
+                 <div class="col-md-8 col-md-pull-8">
+                   <input type="text" [(ngModel)]="carad.adtitle" required class="form-control" id="adtitle" name="adtitle"/>
+                 </div>
+               </div>
+             </div>
+             <hr />
+           </div>
+
+    <!-- -->
+    <div class="row">
+       <div class="col-xs-4"><label for="adprice" [translate]="'post.price'"></label>
+       </div>
+       <div class="col-xs-8">
+         <div class="row">
+           <div class="col-md-4 col-md-push-4"></div>
+           <div class="col-md-8 col-md-pull-8">
+
+             <div class="radio">
+               <input  value="pric" [(ngModel)]="carad.pricetype" class= "price" type="radio" name="optradio" checked>
+               <input type="number" [(ngModel)]="carad.price" class="form-control" id="adprice" min="0" name="adprice"/>$
+            </div>
+            <div class="radio">
+             <input class= "noprice" [(ngModel)]="carad.pricetype" value="free" type="radio" name="optradio"><span [translate]="'post.free'"></span>
+            </div>
+            <div class="radio">
+              <input class= "noprice" [(ngModel)]="carad.pricetype" value="cont" type="radio" name="optradio" ><span [translate]="'post.cont'"></span>
+            </div>
+            <div class="radio">
+              <input class= "noprice" [(ngModel)]="carad.pricetype" value="swap" type="radio" name="optradio" ><span [translate]="'post.swap'"></span>
+            </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+    <!-- -->
+
+    </div>
+
+
+
+           <div class="row well">
+            <label for="soldby"  [translate]="'post.saleby'"></label>
+             <section>
+              <mat-radio-group [(ngModel)]="carad.soldby" name="soldby">
+                 <mat-radio-button value="own" color="accent" ><span  [translate]="'post.owner'"></span> </mat-radio-button>
+                 <mat-radio-button value="deal" color="primary" [translate]="'post.dealer'"><span  [translate]="'post.dealer'"></span></mat-radio-button><br/>
+              </mat-radio-group>
+            </section>
+           </div>
+
+            <div class="row well">
+                <div class="col-sm-6">
+              		 <label for="carmake" [translate]="'post.make'"></label>
+                   <select class="form-control" name="carmake" [(ngModel)]="carad.make" (change)="onMakeChange($event.target.value)">
+                    <option [ngValue]="null"  [translate]="'post.oth'"></option>
+                    <option *ngFor="let crm of allCarmake" [ngValue]="crm.makeId">
+                     {{ crm.makeName }}
+                    </option>
+                   </select>
+                 </div>
+
+           <div class="col-sm-6">
+          	<div class="form-group">
+          		 <label for="carmodel" [translate]="'post.model'"></label>
+               <select class="form-control" name="carmodel" [(ngModel)]="carad.model">
+                <option [ngValue]="null" [translate]="'post.oth'"></option>
+                <option *ngFor="let mdl of modellist" [ngValue]="mdl.modelid">
+                 {{ mdl.modelname }}
+                </option>
+               </select>
+            </div>
+          </div>
+      </div>
+
+      <div class="row well">
+         <div class="col-sm-6">
+            <div class="form-group">
+               <label for="trans" [translate]="'post.transmission'"></label>
+               <select class="form-control" name="trans" [(ngModel)]="carad.trans">
+                <option value="oth" [translate]="'post.oth'"></option>
+                <option value="auto" [translate]="'post.auto'"></option>
+                <option value="manu" [translate]="'post.manu'">  </option>
+               </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="drive" [translate]="'post.drivetrain'"></label>
+      	       <select class="form-control" name="drive" [(ngModel)]="carad.drivetrain">
+                 <option value="oth" [translate]="'post.oth'"></option>
+                 <option value="awd" [translate]="'post.awd'"></option>
+                 <option value="fwd"  [translate]="'post.fwd'"></option>
+                 <option value="rwd" [translate]="'post.rwd'"></option>
+                 <option value="xxx">4X4  </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row well">
+          <div class="col-sm-6">
+             <div class="form-group">
+              <label for="body" [translate]="'post.bodytype'"></label>
+              <select class="form-control" name="body" [(ngModel)]="carad.body">
+                <option value="oth" [translate]="'post.oth'"></option>
+                <option value="coup" [translate]="'post.coup'"></option>
+                <option value="conv" [translate]="'post.conv'"></option>
+                <option value="hatc" [translate]="'post.hatc'"></option>
+                <option value="van" [translate]="'post.conv'"></option>
+                <option value="sed" [translate]="'post.sed'"></option>
+             </select>
+        </div>
+        </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="fuel" [translate]="'post.fueltype'"></label>
+    	          <select class="form-control" name="fuel" [(ngModel)]="carad.fuel">
+                  <option value="oth" [translate]="'post.oth'"></option>
+                  <option value="dis" [translate]="'post.dis'"></option>
+                  <option value="gas" [translate]="'post.gas'"></option>
+                  <option value="hyb" [translate]="'post.hyb'"></option>
+                  <option value="elec"  [translate]="'post.elec'"></option>
+               </select>
+           </div>
+         </div>
+       </div>
+
+    <div class="row well">
+
+         <div class="col-sm-6">
+          <div class="form-group">
+           <label for="year" [translate]="'post.year'"></label>
+              <select class="form-control" name="carmodel" [(ngModel)]="carad.year">
+              <option [ngValue]="null" [translate]="'post.oth'"></option>
+              <option *ngFor="let yr of yearsList" [ngValue]="yr.value">
+               {{ yr.name }}
+              </option>
+             </select>
+            </div>
+          </div>
+
+           <div class="col-sm-6">
+               <div class="form-group">
+                 <label for="color" [translate]="'post.colour'"></label>
+                	<select class="form-control" name="color" [(ngModel)]="carad.color">
+                   <option value="oth"  [translate]="'post.oth'"></option>
+                   <option value="whit"  [translate]="'post.whit'"></option>
+                   <option value="blac" [translate]="'post.blac'"></option>
+                   <option value="silv"  [translate]="'post.silv'"></option>
+                   <option value="grey"  [translate]="'post.grey'"></option>
+                   <option value="blue"  [translate]="'post.blue'"></option>
+                   <option value="gree"  [translate]="'post.gree'"></option>
+                   <option value="Brow"  [translate]="'post.brow'"></option>
+                  </select>
+                </div>
+             </div>
+
+             <div class="col-sm-6">
+               <div class="form-group">
+                  <label for="Kilometers" [translate]="'post.kilometers'"></label>
+        	        <input type="text" class="form-control" [(ngModel)]="carad.kilometers" id="Kilometers" name="Kilometers"/>
+                </div>
+             </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="DoorsNo" [translate]="'post.numdoors'"></label>
+        	      <input  type="text" class="form-control" [(ngModel)]="carad.doorNo" id="DoorsNo" name="DoorsNo"/>
+             </div>
+            </div>
+
+
+
+           <div class="col-sm-6">
+             <div class="form-group">
+               <label for="emailad" [translate]="'post.email'"></label>
+               <input  type="email" class="form-control" [(ngModel)]="carad.email" id="emailad" name="emailad"
+                #emailad="ngModel" [email]="carad.email!='' && carad.email!=null"/>
+            </div>
+            <div class= "alert alert-danger" *ngIf="emailad.errors?.email && emailad.touched">
+                Invalid email
+            </div>
+           </div>
+
+           <div class="col-sm-2">
+             <div class="form-group">
+               <label for="PhoneNumber" [translate]="'post.phone'"></label>
+               <input  type="text" class="form-control" pattern ="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$" [(ngModel)]="carad.phone" id="PhoneNumber" name="PhoneNumber" #phonenumber="ngModel"/>
+            </div>
+            </div>
+            <div class="col-sm-4">
+              <label>  </label>
+              <div class= "form-group alert alert-danger" *ngIf="phonenumber.invalid && phonenumber.touched">
+                Invalid phone number
+              </div>
+            </div>
+
+
+           <div class="col-sm-6">
+             <div class="form-group">
+               <label for="postalCode" [translate]="'post.postalcode'"></label>
+               <input type="text"  class="form-control" pattern="^(?!.*[DFIOQU])[A-VXY][0-9][A-Z] ?[0-9][A-Z][0-9]$"  id="postalCode" name="postalCode" [(ngModel)]="carad.postalcode" #postalcode="ngModel">
+               <div *ngIf="postalcode.invalid && (postalcode.dirty || postalcode.touched)"
+                   class="alert alert-danger">
+                   test test
+                <div *ngIf="postalcode.errors.required">
+                   Postal code is required.
+                </div>
+               </div>
+             </div>
+           </div>
+
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="Address" [translate]="'post.address'"></label>
+              <input  type="text" class="form-control" [(ngModel)]="carad.address" id="Address" name="Address"/>
+           </div>
+           </div>
+
+           <div class="col-sm-6">
+            <div class="form-group">
+             <label for="areacode" [translate]="'post.adarea'"></label>
+                <select class="form-control" name="areacode" [(ngModel)]="carad.areacode">
+                <option value="GRDM" [translate]="'post.oth'"></option>
+                <option *ngFor="let area of areaList" [ngValue]="area.value">
+                 {{ area.name }}
+                </option>
+               </select>
+              </div>
+            </div>
+
+           <div class="col-sm-12">
+            <div class="form-group">
+              <label for="comment" [translate]="'post.description'"></label>
+              <textarea class="form-control" rows="5" [(ngModel)]="carad.descr" id="comment" name="addescreption" ></textarea>
+            </div>
+          </div>
+
+
+     <br><br>
+
+   </div>
+
+      <div class="album text-muted">
+        <div calss="container">
+         <div class="fileinput fileinput-new" data-provides="fileinput">
+           <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+           <div>
+            <span class="btn btn-primary btn-file"><span class="fileinput-new" [translate]="'post.selectimg'"></span><span class="fileinput-exists" [translate]="'post.change'"></span><input type="file" name="file"
+            (change)="uploadImageService.fileChangeEvent($event)"></span>
+            <a href="#" class="btn btn-danger fileinput-exists" data-dismiss="fileinput" name="file1" (click)="uploadImageService.removeImage($event)">Remove</a>
+           </div>
+        </div>
+
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+          <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
+          <div>
+            <span class="btn btn-primary btn-file"><span class="fileinput-new" [translate]="'post.selectimg'"></span><span class="fileinput-exists" [translate]="'post.change'"></span><input type="file" name="file"
+            (change)="uploadImageService.fileChangeEvent2($event)"></span>
+            <a href="#" name="file2" class="btn btn-danger fileinput-exists" data-dismiss="fileinput" (click)="uploadImageService.removeImage($event)">Remove</a>
+          </div>
+        </div>
+       </div>
+        <br><br>
+      </div>
+
+    <div class="col-sm-6">
+					<button (click)="onSubmit()"   [disabled]="carForm.invalid" class="btn btn-primary"  type="submit" [translate]="'post.submit'"></button>
+					<button  class="btn btn-danger"  routerLink="/" [translate]="'post.cancel'"></button>
+    </div>
+
+  </form>
+ </div>
+</div>
